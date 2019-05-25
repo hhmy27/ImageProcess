@@ -1,0 +1,4 @@
+#ifndef IMAGEALGORITHM_H
+#define IMAGEALGORITHM_H
+
+#endif // IMAGEALGORITHM_H
