@@ -180,9 +180,17 @@
     <addaction name="actionSharpen"/>
     <addaction name="actionEdge_Detection"/>
     <addaction name="actionmedian_filter"/>
+    <addaction name="actionSalt"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>图片操作</string>
+    </property>
+    <addaction name="actionChange_Image"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <action name="actionOpen_Image">
    <property name="text">
@@ -227,6 +235,16 @@
   <action name="actionmedian_filter">
    <property name="text">
     <string>Median Filter</string>
+   </property>
+  </action>
+  <action name="actionSalt">
+   <property name="text">
+    <string>Salt</string>
+   </property>
+  </action>
+  <action name="actionChange_Image">
+   <property name="text">
+    <string>Change Image</string>
    </property>
   </action>
  </widget>

@@ -8,16 +8,7 @@ ImageMode::ImageMode()
 
 }
 
-void ImageMode::OpenImage()
-{
-//    openfilename=QFileDialog::getOpenFileName(this,QObject::tr("Open File"),"",QObject::tr("Images (*.png *.xpm *.jpg)"));
-//    oriImage.load(openfilename);
-//    eftImage.load(openfilename);
-}
-void ImageMode::SaveImage()
-{
 
-}
 void ImageMode::retImage()
 {
     tImage=oriImage;
@@ -25,5 +16,12 @@ void ImageMode::retImage()
 void ImageMode::seteftImage()
 {
     eftImage=tImage;
+}
+
+void ImageMode::changeImage()
+{
+    tImage=eftImage;
+    eftImage=oriImage;
+    oriImage=tImage;
 }
 

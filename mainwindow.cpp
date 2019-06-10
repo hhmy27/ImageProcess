@@ -244,3 +244,25 @@ void MainWindow::on_actionmedian_filter_triggered()
     ui->LBeftImage->setPixmap(pImage);
     SetHistogram(this->pEftChart,imageMode->eftImage);
 }
+
+void MainWindow::on_actionSalt_triggered()
+{
+    imageMode->retImage();
+    imageAlg->ImageSalt(imageMode->tImage);
+    imageMode->seteftImage();
+    pImage=QPixmap::fromImage(imageMode->eftImage);
+    ui->LBeftImage->setPixmap(pImage);
+    SetHistogram(this->pEftChart,imageMode->eftImage);
+}
+
+void MainWindow::on_actionChange_Image_triggered()
+{
+    //交换图片 重新绘图
+    imageMode->changeImage();
+    pImage=QPixmap::fromImage(imageMode->eftImage);
+    QPixmap tImage=QPixmap::fromImage(imageMode->oriImage);
+    ui->LBoriImage->setPixmap(tImage);
+    ui->LBeftImage->setPixmap(pImage);
+    SetHistogram(this->pOriChart,imageMode->oriImage);
+    SetHistogram(this->pEftChart,imageMode->eftImage);
+}

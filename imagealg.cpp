@@ -39,8 +39,6 @@ void ImageAlg::Image2Gray(QImage& Image)
 
 void ImageAlg::ImageEqual(QImage &Image)
 {
-    qDebug()<<"ok\n";
-    //无奈自己不会操作QBitmap取到其中的GrayData，只好对Image中的图都进行统计然后再转成灰度图
     int width,height;
     width=Image.width();
     height=Image.height();
@@ -140,13 +138,14 @@ void ImageAlg::ImageSmooth(QImage& Image)
     //---------------------------------------------------------------------------------
     //自己写的算法
     //读入某些图片会提示像素点越界
-    double kernel[]={0.1,0.1,0.1,0.1,0.2,0.1,0.1,0.1,0.1};
+//    double kernel[]={0.1,0.1,0.1,0.1,0.2,0.1,0.1,0.1,0.1};
+    double kernel[]={1,1,1,1,1,1,1,1,1};
     int size=1;
     int H=Image.height();
     int W=Image.width();
     //    Image.setPixel(W-1,H-1,qRgb(0,0,0));
-    //        int sumKernel=1;
-    //        for(int i=0;i<9;i++)sumKernel+=kernel[i];
+    int sumKernel=0;
+    for(int i=0;i<9;i++)sumKernel+=kernel[i];
     QImage tImage=Image;
     int tr,tg,tb;
     QColor tColor;
@@ -173,9 +172,9 @@ void ImageAlg::ImageSmooth(QImage& Image)
                     tb+=tColor.blue()*kernel[(i+1)*3+j+1];
                 }
             }
-            tr = qBound(0, tr, 255);
-            tg = qBound(0, tg, 255);
-            tb = qBound(0, tb, 255);
+            tr = qBound(0, tr/sumKernel, 255);
+            tg = qBound(0, tg/sumKernel, 255);
+            tb = qBound(0, tb/sumKernel, 255);
             tImage.setPixel(x,y,qRgb(tr,tg,tb));
         }
     }
@@ -456,4 +455,25 @@ void ImageAlg::ImageMedianFilter(QImage &Image)
     }
     Image=tImage;
 
+}
+
+void ImageAlg::ImageSalt(QImage &Image)
+{
+    QImage tImage=Image;
+    const int num=1000;
+    int x,y;
+    for(int i=0;i<num;i++)
+    {
+        x=(int)rand()%tImage.width();
+        y=(int)rand()%tImage.height();
+        if(tImage.allGray())
+        {
+           tImage.setPixel(x,y,qGray(255));
+        }
+        else
+        {
+            tImage.setPixel(x,y,qRgb(255,255,255));
+        }
+    }
+    Image=tImage;
 }

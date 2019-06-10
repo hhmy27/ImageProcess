@@ -41,3 +41,11 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     dialog.ui
+
+INCLUDEPATH+= F:\opencv_build\install\include
+F:\opencv_build\install\include\opencv
+F:\opencv_build\install\include\opencv2
+
+LIBS += F:\opencv_build\install\x64\vc15\bin\libopencv_*.dll
+F:\opencv_build\install\x64\vc15\lib\libopencv_*.dll
+

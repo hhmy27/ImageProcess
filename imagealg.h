@@ -13,6 +13,7 @@ public:
     void ImageEdgeDetection(QImage& Image);
     void ImageGaussianBlur(QImage& Image);
     void ImageMedianFilter(QImage& Image);
+    void ImageSalt(QImage& Image);
     int judgeEdge(int x,int i,int width);
 //    void Image
 };
